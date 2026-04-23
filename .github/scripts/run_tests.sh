@@ -6,7 +6,7 @@ echo "=============================="
 
 echo ""
 echo "📦 COMPILING PROGRAM"
-cobc -x programs/numbers.cob -o numbers
+cobc -x -free programs/numbers.cob -o numbers
 
 if [ $? -ne 0 ]; then
   echo "❌ COMPILATION FAILED"
