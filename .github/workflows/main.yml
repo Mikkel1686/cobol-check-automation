@@ -1,4 +1,4 @@
-name: COBOL Check Automation
+name: COBOL Check Automation 🚀
 
 on:
   push:
@@ -9,25 +9,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: 📥 Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: ☕ Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '11'
 
-      - name: Run COBOL Check
+      - name: 🧩 Install GnuCOBOL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnucobol
+
+      - name: 🧪 Run COBOL Check (Init)
         env:
           ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
           ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
         run: |
-          echo "Running COBOL Check pipeline..."
-          echo "Username loaded (hidden)"
-          echo "Pipeline ready"
+          echo "🚀 Running COBOL Check pipeline..."
+          echo "🔐 Credentials loaded (hidden)"
+          echo "⚙️ Environment ready"
 
-      - name: Run COBOL Check Tests
+      - name: 🧪 Run COBOL Tests
         run: |
           chmod +x .github/scripts/run_tests.sh
           .github/scripts/run_tests.sh
