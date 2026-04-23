@@ -1,21 +1,27 @@
 #!/bin/bash
 
 echo "=============================="
-echo "🧪 COBOL REAL TEST START"
+echo "🧪 COBOL CHECK STYLE TEST RUN"
 echo "=============================="
 
-cobc -x -free programs/numbers.cob -o numbers
+echo ""
+echo "📦 COMPILING PROGRAM"
+cobc -x programs/numbers.cob -o numbers
 
 if [ $? -ne 0 ]; then
   echo "❌ COMPILATION FAILED"
   exit 1
 fi
 
+echo "✅ COMPILATION OK"
+
+echo ""
+echo "🚀 RUNNING PROGRAM"
 OUTPUT=$(./numbers)
 
-echo "📤 OUTPUT = $OUTPUT"
+echo "OUTPUT = $OUTPUT"
 
-if [ "$OUTPUT" = "5" ]; then
+if [ "$OUTPUT" -eq 5 ]; then
   echo "✅ TEST PASS"
   exit 0
 else
