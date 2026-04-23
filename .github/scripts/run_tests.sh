@@ -1,23 +1,17 @@
 #!/bin/bash
 
-echo "================================"
-echo " COBOL CHECK TEST EXECUTION"
-echo "================================"
+echo "=== COBOL REAL TEST ==="
 
-echo ""
-echo "TESTSUITE: NUMBERS TEST SUITE"
-echo "TESTCASE: ADD TWO NUMBERS"
+cobc -x programs/numbers.cob -o numbers
 
-echo ""
-echo "ARRANGE -> MOVE 2 TO A"
-echo "ARRANGE -> MOVE 3 TO B"
+OUTPUT=$(./numbers)
 
-echo ""
-echo "ACT -> PERFORM ADD-NUMBERS"
+echo "OUTPUT = $OUTPUT"
 
-echo ""
-echo "ASSERT -> RESULT = 5"
-
-echo ""
-echo "RESULT: PASS"
-echo "================================"
+if [ "$OUTPUT" = "5" ]; then
+  echo "TEST PASS"
+  exit 0
+else
+  echo "TEST FAIL"
+  exit 1
+fi
